@@ -39,7 +39,7 @@
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="../../dashboard-one.html" class="nav-link">
+            <a href="{{ route('dashboard') }}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
@@ -564,26 +564,29 @@
 						</li>
 						<li class="nav-item dropdown nav-profile">
 							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="https://via.placeholder.com/30x30" alt="profile">
+								 @if (Auth::user()->photo == null)
+                                        <img src="https://via.placeholder.com/80x80" alt="">
+                                        @else
+                                         <img src="{{ asset('uploads/users') }}/{{ Auth::user()->photo }}" alt="">
+                                        @endif
 							</a>
 							<div class="dropdown-menu" aria-labelledby="profileDropdown">
 								<div class="dropdown-header d-flex flex-column align-items-center">
 									<div class="figure mb-3">
-										<img src="https://via.placeholder.com/80x80" alt="">
+                                        @if (Auth::user()->photo == null)
+                                        <img src="https://via.placeholder.com/80x80" alt="">
+                                        @else
+                                         <img src="{{ asset('uploads/users') }}/{{ Auth::user()->photo }}" alt="">
+                                        @endif
 									</div>
 									<div class="info text-center">
-										<p class="name font-weight-bold mb-0">Amiah Burton</p>
-										<p class="email text-muted mb-3">amiahburton@gmail.com</p>
+										<p class="name font-weight-bold mb-0">{{ Auth::user()->name }}</p>
+										<p class="email text-muted mb-3">{{ Auth::user()->email }}</p>
 									</div>
 								</div>
 								<div class="dropdown-body">
 									<ul class="profile-nav p-0 pt-3">
-										<li class="nav-item">
-											<a href="../../pages/general/profile.html" class="nav-link">
-												<i data-feather="user"></i>
-												<span>Profile</span>
-											</a>
-										</li>
+
 										<li class="nav-item">
 											<a href="{{ route('edit.profile') }}" class="nav-link">
 												<i data-feather="edit"></i>
@@ -591,18 +594,13 @@
 											</a>
 										</li>
 										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
-												<i data-feather="repeat"></i>
-												<span>Switch User</span>
-											</a>
-										</li>
-										<li class="nav-item">
-                                            <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
+                                             <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
 											<button type="submit" class="nav-link  border-0 bg-transparent">
 												<i data-feather="log-out"></i>
 												<span>Log Out</span>
 											</button>
+                                                </form>
 										</li>
 									</ul>
 								</div>
@@ -629,12 +627,16 @@
 
 	<!-- core:js -->
 	<script src="{{ asset('backend_assets') }}/vendors/core/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 	<!-- endinject -->
 	<!-- plugin js for this page -->
 	<!-- end plugin js for this page -->
 	<!-- inject:js -->
 	<script src="{{ asset('backend_assets') }}/vendors/feather-icons/feather.min.js"></script>
 	<script src="{{ asset('backend_assets') }}/js/template.js"></script>
+
+    @yield('footer_script')
 	<!-- endinject -->
 	<!-- custom js for this page -->
   <!-- end custom js for this page -->
