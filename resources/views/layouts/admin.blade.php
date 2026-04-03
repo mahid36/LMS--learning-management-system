@@ -8,6 +8,7 @@
 	<title>LMS- Admin Dashboard</title>
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{ asset('backend_assets') }}/vendors/core/core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	<!-- endinject -->
 	<!-- plugin css for this page -->
 	<!-- end plugin css for this page -->
@@ -44,17 +45,17 @@
               <span class="link-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item nav-category">web apps</li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
               <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Email</span>
+              <span class="link-title">Course Category </span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="../../pages/email/inbox.html" class="nav-link">Inbox</a>
+                  <a href="{{ route('add.category') }}" class="nav-link">Add Category</a>
                 </li>
                 <li class="nav-item">
                   <a href="../../pages/email/read.html" class="nav-link">Read</a>

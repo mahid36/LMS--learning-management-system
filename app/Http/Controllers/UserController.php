@@ -19,10 +19,7 @@ class UserController extends Controller
         'name' => 'required|string|max:255',
         'photo'=>'image|mimes:png,jpg,jpeg|max:1024',
         'password'=>'required',
-        'new_password'=>
-        ['required_with:password',
-
-        ],
+        'new_password'=>'required_with:password',
         'password_confirmation'=>'nullable|required_with:password|same:new_password',
     ]);
     if($request->password){
