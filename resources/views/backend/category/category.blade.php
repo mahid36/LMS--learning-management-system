@@ -4,7 +4,7 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
-                <h3>Category List</h3>
+                <h3>Course List</h3>
             </div>
             <div class="carde-body">
                 <table class="table table-bordered">
@@ -36,20 +36,20 @@
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
-                <h3>Add new category</h3>
+                <h3>Add new course</h3>
             </div>
             <div class="card-body">
                 <form action="{{ route('store.category') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Category name -</label>
+                        <label class="form-label">Course name -</label>
                         <input type="text" name="category_name" class="form-control">
                         @error('category_name')
                         <strong class="text-danger">{{ $message }}</strong>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Category Image -</label>
+                        <label class="form-label">Course Image -</label>
                         <input type="file" name="category_image" class="form-control">
                          @error('category_image')
                         <strong class="text-danger">{{ $message }}</strong>
@@ -57,6 +57,55 @@
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-dark">Submit category</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>Course Level List</h3>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Sl</th>
+                        <th>Level name</th>
+                        <th>Delete</th>
+                    </tr>
+                    @foreach ($levels as $index=>$lev )
+                    <tr>
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ $lev->level_name }}</td>
+                        <td>
+                            <a href="{{ route('delete.level',$lev->id)}}">
+                                    <i class="fa-solid fa-trash" style="font-size: 22px; color: rgb(100, 96, 96); cursor: pointer"></i>
+                        </td>
+                    </tr>
+
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Add course level</h3>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('store.level') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label">Add course level</label>
+                        <input type="text"name="level" class="form-control">
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>

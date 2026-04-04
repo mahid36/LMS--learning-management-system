@@ -49,16 +49,16 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
               <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Course Category </span>
+              <span class="link-title">Courses </span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{ route('add.category') }}" class="nav-link">Add Category</a>
+                  <a href="{{ route('add.category') }}" class="nav-link">Course Category</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../pages/email/read.html" class="nav-link">Read</a>
+                  <a href="{{ route('create.course') }}" class="nav-link">Create Course</a>
                 </li>
                 <li class="nav-item">
                   <a href="../../pages/email/compose.html" class="nav-link">Compose</a>
