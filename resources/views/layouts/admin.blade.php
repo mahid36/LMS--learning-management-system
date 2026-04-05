@@ -7,8 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>LMS- Admin Dashboard</title>
 	<!-- core:css -->
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+  integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 	<link rel="stylesheet" href="{{ asset('backend_assets') }}/vendors/core/core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
 	<!-- endinject -->
 	<!-- plugin css for this page -->
 	<!-- end plugin css for this page -->
@@ -58,7 +66,7 @@
                   <a href="{{ route('add.category') }}" class="nav-link">Course Category</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('create.course') }}" class="nav-link">Create Course</a>
+                  <a href="{{ route('create.course') }}" class="nav-link">Create New Course</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('tags') }}" class="nav-link">Tags</a>
@@ -636,6 +644,13 @@
 	<!-- inject:js -->
 	<script src="{{ asset('backend_assets') }}/vendors/feather-icons/feather.min.js"></script>
 	<script src="{{ asset('backend_assets') }}/js/template.js"></script>
+    <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+  integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
 
     @yield('footer_script')
 	<!-- endinject -->

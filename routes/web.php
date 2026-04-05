@@ -27,7 +27,9 @@ Route::get('delete/level/{id}',[CategoryController::class,'delete_level'])->midd
 Route::get('create/course',[CreateCourseController::class,'create_course'])->middleware(['auth', 'verified'])->name('create.course');
 Route::get('tags',[TagController::class,'tags'])->middleware(['auth', 'verified'])->name('tags');
 Route::post('store/tags',[TagController::class,'store_tags'])->middleware(['auth', 'verified'])->name('store.tags');
+Route::post('store/language',[TagController::class,'store_language'])->middleware(['auth', 'verified'])->name('store.language');
 Route::get('delete/tags/{id}',[TagController::class,'delete_tags'])->middleware(['auth', 'verified'])->name('delete.tags');
+Route::post('store/course',[CreateCourseController::class,'store_course'])->middleware(['auth', 'verified'])->name('store.course');
 
 
 
