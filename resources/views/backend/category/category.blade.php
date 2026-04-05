@@ -12,7 +12,7 @@
                         <th>SL</th>
                         <th>Category name</th>
                         <th>Image</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                     @foreach ($categories as $index=>$cat)
                     <tr>
@@ -75,7 +75,7 @@
                     <tr>
                         <th>Sl</th>
                         <th>Level name</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                     @foreach ($levels as $index=>$lev )
                     <tr>
@@ -103,10 +103,10 @@
                     <div class="mb-3">
                         <label class="form-label">Add course level</label>
                         <input type="text"name="level" class="form-control">
-                        <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
                             <button type="submit" class="btn btn-dark">Submit</button>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>

@@ -61,7 +61,7 @@
                   <a href="{{ route('create.course') }}" class="nav-link">Create Course</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../pages/email/compose.html" class="nav-link">Compose</a>
+                  <a href="{{ route('tags') }}" class="nav-link">Tags</a>
                 </li>
               </ul>
             </div>
