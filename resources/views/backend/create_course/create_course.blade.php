@@ -39,7 +39,7 @@
                         </div>
                          <div class="col-lg-6">
                             <div class="mb-3">
-                                <label class="form-label">Select level</label>
+                                <label class="form-label">Select tag</label>
                                 <select id="select-gear" name="tag_id[]" class="demo-default" multiple placeholder="Select tag...">
                                     <option value="">Select tag..</option>
                                 <optgroup label="Climbing">
@@ -98,12 +98,25 @@
                                <input type="file" class="form-control" name="preview">
                             </div>
                         </div>
+                         <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Select instructor</label>
+                                <select name="instructor_id" class="form-control">
+                                    <option value="">Select instructors</option>
+                                    @foreach ($instructors as $ins)
+                                      <option value="{{ $ins->id }}">{{ $ins->instructor_name }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label class="form-label">Long description</label>
                                <textarea cols="30"rows="10" class="form-control" name="long_desp" id="summernote"></textarea>
                             </div>
                         </div>
+
                         <div class="col-lg-12">
                             <div class="mb-3 d-flex justify-content-end">
                                <button type="submit" class="btn btn-dark ">Submit Course</button>

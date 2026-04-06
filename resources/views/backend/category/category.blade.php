@@ -4,7 +4,7 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
-                <h3>Course List</h3>
+                <h3>Course Category List</h3>
             </div>
             <div class="carde-body">
                 <table class="table table-bordered">
@@ -42,7 +42,7 @@
                 <form action="{{ route('store.category') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Course name -</label>
+                        <label class="form-label">Category name -</label>
                         <input type="text" name="category_name" class="form-control">
                         @error('category_name')
                         <strong class="text-danger">{{ $message }}</strong>

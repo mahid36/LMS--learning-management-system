@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Level;
 use App\Models\Course;
+use App\Models\Instructor;
 use App\Models\Language;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+
 
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -20,11 +22,13 @@ class CreateCourseController extends Controller
         $levels = Level::all();
         $tags = Tag::all();
         $languages = Language::all();
+        $instructors = Instructor::all();
         return view('backend.create_course.create_course',[
             'categories'=>$categories,
             'levels'=>$levels,
             'tags'=>$tags,
             'languages'=>$languages,
+            'instructors'=>$instructors,
         ]);
     }
     function store_course(Request $request){
@@ -37,7 +41,7 @@ class CreateCourseController extends Controller
 
          $manager = new ImageManager(new Driver());
         $image = $manager->read($preview);
-        $image->save(public_path('uploads/course/preview'.$file_name ));
+        $image->save(public_path('uploads/course/preview/'.$file_name ));
 
         Course::insert([
             'category_id'=>$request->category_id,
@@ -54,9 +58,16 @@ class CreateCourseController extends Controller
             'discount'=>$request->discount,
             'discount_price'=>$request->discount_price -($request->course_price * $request->discount /100),
             'preview'=>$file_name,
+            'instructor_id'=>$request->instructor_id,
             'created_at'=>Carbon::now(),
 
         ]);
         return back()->with('success','Course added successfully');
+    }
+    function course_list(){
+        $courses = Course::all();
+        return view('backend.course_list',[
+            'courses'=>$courses,
+        ]);
     }
 }

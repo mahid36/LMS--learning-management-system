@@ -75,15 +75,15 @@
             </div>
           </li>
           <li class="nav-item">
-            <a href="../../pages/apps/chat.html" class="nav-link">
+            <a href="{{ route('course.list') }}" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Chat</span>
+              <span class="link-title">Course list</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../../pages/apps/calendar.html" class="nav-link">
+            <a href="{{ route('instructor') }}" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Calendar</span>
+              <span class="link-title">Instructors</span>
             </a>
           </li>
           <li class="nav-item nav-category">Components</li>

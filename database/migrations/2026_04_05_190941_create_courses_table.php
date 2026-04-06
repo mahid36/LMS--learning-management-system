@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('discount')->nullable();
             $table->integer('discount_price')->nullable();
             $table->string('preview');
+            $table->integer('instructor_id');
             $table->timestamps();
         });
     }

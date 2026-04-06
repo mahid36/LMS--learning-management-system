@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CreateCourseController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,18 +20,33 @@ Route::get('/edit/profile',[UserController::class,'edit_profile'])->middleware([
 Route::post('/update/profile',[UserController::class,'update_profile'])->middleware(['auth', 'verified'])->name('update.profile');
 
 // Category//
+
 Route::get('add/category',[CategoryController::class,'add_category'])->middleware(['auth', 'verified'])->name('add.category');
 Route::post('store/category',[CategoryController::class,'store_category'])->middleware(['auth', 'verified'])->name('store.category');
 Route::get('delete/category/{id}',[CategoryController::class,'delete_category'])->middleware(['auth', 'verified'])->name('delete.category');
+
+//Level//
+
 Route::post('store/level/',[CategoryController::class,'store_level'])->middleware(['auth', 'verified'])->name('store.level');
 Route::get('delete/level/{id}',[CategoryController::class,'delete_level'])->middleware(['auth', 'verified'])->name('delete.level');
+
+//create_course//
+
 Route::get('create/course',[CreateCourseController::class,'create_course'])->middleware(['auth', 'verified'])->name('create.course');
+Route::post('store/course',[CreateCourseController::class,'store_course'])->middleware(['auth', 'verified'])->name('store.course');
+Route::get('course/list',[CreateCourseController::class,'course_list'])->middleware(['auth', 'verified'])->name('course.list');
+
+//tags//
 Route::get('tags',[TagController::class,'tags'])->middleware(['auth', 'verified'])->name('tags');
 Route::post('store/tags',[TagController::class,'store_tags'])->middleware(['auth', 'verified'])->name('store.tags');
 Route::post('store/language',[TagController::class,'store_language'])->middleware(['auth', 'verified'])->name('store.language');
 Route::get('delete/tags/{id}',[TagController::class,'delete_tags'])->middleware(['auth', 'verified'])->name('delete.tags');
-Route::post('store/course',[CreateCourseController::class,'store_course'])->middleware(['auth', 'verified'])->name('store.course');
 
+//instructor//
+
+Route::get('instructor',[InstructorController::class,'instructor'])->middleware(['auth', 'verified'])->name('instructor');
+Route::post('store/instructor',[InstructorController::class,'store_instructor'])->middleware(['auth', 'verified'])->name('store.instructor');
+Route::get('delete/instructor/{id}',[InstructorController::class,'delete_instructor'])->middleware(['auth', 'verified'])->name('delete.instructor');
 
 
 // Route::middleware('auth')->group(function () {
