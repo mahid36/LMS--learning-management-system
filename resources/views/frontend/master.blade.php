@@ -99,7 +99,7 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="index.html">
+			<a class="navbar-brand" href="{{ route('index') }}">
 				<img class="light-mode-item navbar-brand-item" src="{{asset('frontend_asset')}}/images/logo.svg" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="{{asset('frontend_asset')}}/images/logo-light.svg" alt="logo">
 			</a>
@@ -144,110 +144,15 @@
 				<!-- Nav Main menu START -->
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle active" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-						<ul class="dropdown-menu" aria-labelledby="demoMenu">
-							<li> <a class="dropdown-item active" href="index.html">Home Default</a></li>
-
-						</ul>
-					</li>
+					<li class="nav-item">
+                        <a class="nav-link" href="{{ route('index') }}">Home</a>
+                    </li>
 
 					<!-- Nav item 2 Pages -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Course</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+					<li class="nav-item">
+                 <a class="nav-link" href="#">Course</a>
+                </li>
 
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">About</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="about.html">About Us</a></li>
-									<li> <a class="dropdown-item" href="contact-us.html">Contact Us</a></li>
-									<li> <a class="dropdown-item" href="blog-grid.html">Blog Grid</a></li>
-									<li> <a class="dropdown-item" href="blog-masonry.html">Blog Masonry</a></li>
-									<li> <a class="dropdown-item" href="blog-detail.html">Blog Detail</a></li>
-									<li> <a class="dropdown-item" href="pricing.html">Pricing</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Hero Banner</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="docs/snippet-hero-12.html">Hero Form</a></li>
-									<li> <a class="dropdown-item" href="docs/snippet-hero-13.html">Hero Vector</a></li>
-									<li> <p class="dropdown-item mb-0">Coming soon....</p></li>
-								</ul>
-							</li>
-
-							<li> <a class="dropdown-item" href="instructor-list.html">Instructor List</a></li>
-							<li> <a class="dropdown-item" href="instructor-single.html">Instructor Single</a></li>
-							<li> <a class="dropdown-item" href="become-instructor.html">Become an Instructor</a></li>
-							<li> <a class="dropdown-item" href="abroad-single.html">Abroad Single</a></li>
-							<li> <a class="dropdown-item" href="workshop-detail.html">Workshop Detail</a></li>
-							<li> <a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Shop</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="shop.html">Shop grid</a></li>
-									<li> <a class="dropdown-item" href="shop-product-detail.html">Product detail</a></li>
-									<li> <a class="dropdown-item" href="cart.html">Cart</a></li>
-									<li> <a class="dropdown-item" href="checkout.html">Checkout</a></li>
-									<li> <a class="dropdown-item" href="empty-cart.html">Empty Cart</a></li>
-									<li> <a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Help</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="help-center.html">Help Center</a></li>
-									<li> <a class="dropdown-item" href="help-center-detail.html">Help Center Single</a></li>
-									<li> <a class="dropdown-item" href="faq.html">FAQs</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="sign-in.html">Sign In</a></li>
-									<li> <a class="dropdown-item" href="sign-up.html">Sign Up</a></li>
-									<li> <a class="dropdown-item" href="forgot-password.html">Forgot Password</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Form</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="request-demo.html">Request a demo</a></li>
-									<li> <a class="dropdown-item" href="book-class.html">Book a Class</a></li>
-									<li> <a class="dropdown-item" href="request-access.html">Free Access</a></li>
-									<li> <a class="dropdown-item" href="university-admission-form.html">Admission Form</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Specialty</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="error-404.html">Error 404</a></li>
-									<li> <a class="dropdown-item" href="coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li>
-
-						</ul>
 					</li>
 
 					<!-- Nav item 3 Account -->
@@ -508,8 +413,15 @@
 </div>
 <!-- Signout button  -->
 			<div class="navbar-nav d-none d-lg-inline-block">
-				<a href="" class="btn btn-danger-soft mb-0"><i class="fas fa-sign-in-alt me-2"></i>Sign Up</a>
+				<a href="{{ route('sign.up') }}" class="btn btn-danger-soft mb-0"><i class="fas fa-sign-in-alt me-2"></i>Sign Up</a>
 			</div>
+            <div class="card">
+            <div class="mb-3">
+			<div class="navbar-nav d-none d-lg-inline-block">
+				<a href="{{ route('sign.in') }}" class="btn btn-danger-soft mb-0"><i class="fas fa-sign-in-alt me-2"></i>Sign in</a>
+			</div>
+            </div>
+            </div>
 			<!-- Right header content END -->
 			</div>
 			<!-- Main navbar END -->

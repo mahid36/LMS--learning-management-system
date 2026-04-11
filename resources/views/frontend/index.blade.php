@@ -691,12 +691,7 @@ Popular course START -->
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
-									<li class="list-inline-item ms-2 h6 fw-light mb-0">4.5/5.0</li>
-								</ul>
+
 							</div>
 							<!-- Card footer -->
 							<div class="card-footer pt-0 pb-3">

@@ -6,6 +6,7 @@ use App\Http\Controllers\FrontendCOntroller;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -50,7 +51,11 @@ Route::get('instructor',[InstructorController::class,'instructor'])->middleware(
 Route::post('store/instructor',[InstructorController::class,'store_instructor'])->middleware(['auth', 'verified'])->name('store.instructor');
 Route::get('delete/instructor/{id}',[InstructorController::class,'delete_instructor'])->middleware(['auth', 'verified'])->name('delete.instructor');
 
-Route::get('/',[FrontendCOntroller::class,'index'])->name('index');
+//frontend pages//
+
+Route::get('/',[FrontendController::class,'index'])->name('index');
+Route::get('sign/up',[CustomerController::class,'sign_up'])->middleware(['auth', 'verified'])->name('sign.up');
+Route::get('sign/in',[CustomerController::class,'sign_in'])->middleware(['auth', 'verified'])->name('sign.in');
 
 
 // Route::middleware('auth')->group(function () {
