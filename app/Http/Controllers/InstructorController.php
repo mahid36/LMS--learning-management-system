@@ -11,11 +11,11 @@ use Intervention\Image\Drivers\Gd\Driver;
 class InstructorController extends Controller
 {
      function instructor(){
-        $instructors = Instructor::all();
-        $categories = Category::all();
+        $instructors    = Instructor::all();
+        $categories     = Category::all();
         return view('backend.instructors.instructor',[
-            'categories'=>$categories,
-            'instructors'=>$instructors,
+            'categories'    =>  $categories,
+            'instructors'   =>  $instructors,
         ]);
     }
     function store_instructor(Request $request){
@@ -23,19 +23,19 @@ class InstructorController extends Controller
          $slug = strtolower(str_replace('','-', $request->instructor_name));
 
         $instructor_image = $request->instructor_image;
-        $extension = $instructor_image->extension();
-        $file_name = uniqid().'.'.$extension;
+        $extension        = $instructor_image->extension();
+        $file_name        = uniqid().'.'.$extension;
 
-         $manager = new ImageManager(new Driver());
-        $image = $manager->read($instructor_image);
+         $manager         = new ImageManager(new Driver());
+        $image            = $manager->read($instructor_image);
         $image->save(public_path('uploads/instructors/'.$file_name ));
 
         Instructor::insert([
-            'instructor_name'=>$request->instructor_name,
-            'instructor_image'=>$file_name,
-            'category_id'=>$request->category_id,
-            'slug'=>$slug,
-            'created_at'=>Carbon::now(),
+            'instructor_name'   =>  $request->instructor_name,
+            'instructor_image'  =>  $file_name,
+            'category_id'       =>  $request->category_id,
+            'slug'              =>  $slug,
+            'created_at'        =>  Carbon::now(),
         ]);
         return back();
     }

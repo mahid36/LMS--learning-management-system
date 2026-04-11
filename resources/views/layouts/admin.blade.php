@@ -88,12 +88,12 @@
           </li>
           <li class="nav-item nav-category">Components</li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+            <a class="nav-link"  href="{{ route('inventory') }}" >
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">UI Kit</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
+              <span class="link-title">Inventory</span>
+
             </a>
-            <div class="collapse" id="uiComponents">
+            {{-- <div class="collapse" id="uiComponents">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="../../pages/ui-components/alerts.html" class="nav-link">Alerts</a>
@@ -159,7 +159,7 @@
                   <a href="../../pages/ui-components/tooltips.html" class="nav-link">Tooltips</a>
                 </li>
               </ul>
-            </div>
+            </div> --}}
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">

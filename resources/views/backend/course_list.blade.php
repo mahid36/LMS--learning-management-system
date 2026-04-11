@@ -34,7 +34,7 @@
                         <td>{{ $course->rel_to_level->level_name }}</td>
                         <td>&#2547;{{ $course->course_price }}</td>
                         <td>
-                           <a href="" class="btn btn-primary">Inventory</a>
+                           <a href="{{ route('inventory') }}" class="btn btn-primary">Inventory</a>
                            <a href="" class="btn btn-danger">delete</a>
                         </td>
                     </tr>

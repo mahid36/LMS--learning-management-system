@@ -6,7 +6,7 @@
             <div class="card-header">
                 <h3>Course Category List</h3>
             </div>
-            <div class="carde-body">
+            <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>SL</th>

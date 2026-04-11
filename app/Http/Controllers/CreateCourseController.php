@@ -70,4 +70,7 @@ class CreateCourseController extends Controller
             'courses'=>$courses,
         ]);
     }
+    function inventory(){
+        return view('backend.inventory.inventory');
+    }
 }

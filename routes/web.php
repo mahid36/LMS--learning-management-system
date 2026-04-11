@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CreateCourseController;
+use App\Http\Controllers\FrontendCOntroller;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,7 @@ Route::get('delete/level/{id}',[CategoryController::class,'delete_level'])->midd
 Route::get('create/course',[CreateCourseController::class,'create_course'])->middleware(['auth', 'verified'])->name('create.course');
 Route::post('store/course',[CreateCourseController::class,'store_course'])->middleware(['auth', 'verified'])->name('store.course');
 Route::get('course/list',[CreateCourseController::class,'course_list'])->middleware(['auth', 'verified'])->name('course.list');
+Route::get('inventory',[CreateCourseController::class,'inventory'])->middleware(['auth', 'verified'])->name('inventory');
 
 //tags//
 Route::get('tags',[TagController::class,'tags'])->middleware(['auth', 'verified'])->name('tags');
@@ -47,6 +49,8 @@ Route::get('delete/tags/{id}',[TagController::class,'delete_tags'])->middleware(
 Route::get('instructor',[InstructorController::class,'instructor'])->middleware(['auth', 'verified'])->name('instructor');
 Route::post('store/instructor',[InstructorController::class,'store_instructor'])->middleware(['auth', 'verified'])->name('store.instructor');
 Route::get('delete/instructor/{id}',[InstructorController::class,'delete_instructor'])->middleware(['auth', 'verified'])->name('delete.instructor');
+
+Route::get('/',[FrontendCOntroller::class,'index'])->name('index');
 
 
 // Route::middleware('auth')->group(function () {
