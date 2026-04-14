@@ -48,6 +48,7 @@ Route::get('tags',[TagController::class,'tags'])->middleware(['auth', 'verified'
 Route::post('store/tags',[TagController::class,'store_tags'])->middleware(['auth', 'verified'])->name('store.tags');
 Route::post('store/language',[TagController::class,'store_language'])->middleware(['auth', 'verified'])->name('store.language');
 Route::get('delete/tags/{id}',[TagController::class,'delete_tags'])->middleware(['auth', 'verified'])->name('delete.tags');
+Route::get('delete/language/{id}',[TagController::class,'delete_language'])->middleware(['auth', 'verified'])->name('delete.language');
 
 //instructor//
 
@@ -60,6 +61,7 @@ Route::get('delete/instructor/{id}',[InstructorController::class,'delete_instruc
 Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('sign/up',[CustomerController::class,'sign_up'])->middleware(['auth', 'verified'])->name('sign.up');
 Route::get('sign/in',[CustomerController::class,'sign_in'])->middleware(['auth', 'verified'])->name('sign.in');
+Route::get('course',[FrontendController::class,'course'])->middleware(['auth', 'verified'])->name('course');
 
 
 // Route::middleware('auth')->group(function () {

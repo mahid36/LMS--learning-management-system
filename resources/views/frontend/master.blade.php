@@ -150,7 +150,7 @@
 
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item">
-                 <a class="nav-link" href="#">Course</a>
+                 <a class="nav-link" href="{{ route('course') }}">Course</a>
                 </li>
 
 					</li>

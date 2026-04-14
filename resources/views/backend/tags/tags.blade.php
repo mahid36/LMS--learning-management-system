@@ -64,14 +64,18 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>SL</th>
+                        <th>Image</th>
                         <th>Language name</th>
                         <th>Action</th>
                     </tr>
                     @foreach ( $languages as $index=>$lang )
                     <td>{{ $index+1 }}</td>
+                    <td>
+                        <img src="{{ asset('uploads/language_image') }}/{{ $lang->language_image }}" alt="">
+                    </td>
                     <td>{{ $lang->language_name }}</td>
                     <td>
-                     <a href="">
+                     <a href="{{ route('delete.language',$lang->id) }}">
                          <i class="fa-solid fa-trash" style="font-size: 22px; color: rgb(100, 96, 96); cursor: pointer"></i>
                     </tr>
                     @endforeach
@@ -94,6 +98,10 @@
                         @endif
                         <label class="form-label">Add language</label>
                         <input type="text" class="form-control" name="language_name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file" class="form-control" name="language_image">
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-dark">Submit language</button>
