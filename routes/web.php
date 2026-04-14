@@ -26,6 +26,9 @@ Route::post('/update/profile',[UserController::class,'update_profile'])->middlew
 Route::get('add/category',[CategoryController::class,'add_category'])->middleware(['auth', 'verified'])->name('add.category');
 Route::post('store/category',[CategoryController::class,'store_category'])->middleware(['auth', 'verified'])->name('store.category');
 Route::get('delete/category/{id}',[CategoryController::class,'delete_category'])->middleware(['auth', 'verified'])->name('delete.category');
+Route::get('sub/category',[CategoryController::class,'sub_category'])->middleware(['auth', 'verified'])->name('sub.category');
+Route::post('store/subcategory',[CategoryController::class,'store_subcategory'])->middleware(['auth', 'verified'])->name('store.subcategory');
+Route::get('delete/subcategory/{id}',[CategoryController::class,'delete_subcategory'])->middleware(['auth', 'verified'])->name('delete.subcategory');
 
 //Level//
 
@@ -38,6 +41,7 @@ Route::get('create/course',[CreateCourseController::class,'create_course'])->mid
 Route::post('store/course',[CreateCourseController::class,'store_course'])->middleware(['auth', 'verified'])->name('store.course');
 Route::get('course/list',[CreateCourseController::class,'course_list'])->middleware(['auth', 'verified'])->name('course.list');
 Route::get('inventory',[CreateCourseController::class,'inventory'])->middleware(['auth', 'verified'])->name('inventory');
+Route::get('delete/course/{id}',[CreateCourseController::class,'delete_course'])->middleware(['auth', 'verified'])->name('delete.course');
 
 //tags//
 Route::get('tags',[TagController::class,'tags'])->middleware(['auth', 'verified'])->name('tags');

@@ -14,6 +14,7 @@
                         <th>Course titile</th>
                         <th>Instructor</th>
                         <th>Level</th>
+                        <th>Total lectures</th>
                         <th>price</th>
                         <th>Action</th>
                     </tr>
@@ -32,10 +33,11 @@
                     </div>
                         </td>
                         <td>{{ $course->rel_to_level->level_name }}</td>
+                        <td>{{ $course->total_lecture }}</td>
                         <td>&#2547;{{ $course->course_price }}</td>
                         <td>
                            <a href="{{ route('inventory') }}" class="btn btn-primary">Inventory</a>
-                           <a href="" class="btn btn-danger">delete</a>
+                           <a href="{{ route('delete.course',$course->id) }}" class="btn btn-danger">delete</a>
                         </td>
                     </tr>
                     @endforeach

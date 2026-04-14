@@ -66,6 +66,9 @@
                   <a href="{{ route('add.category') }}" class="nav-link">Course Category</a>
                 </li>
                 <li class="nav-item">
+                  <a href="{{ route('sub.category') }}" class="nav-link">Sub Category</a>
+                </li>
+                <li class="nav-item">
                   <a href="{{ route('create.course') }}" class="nav-link">Create New Course</a>
                 </li>
                 <li class="nav-item">

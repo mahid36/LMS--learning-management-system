@@ -7,8 +7,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Category;
 use App\Models\Level;
-
-
+use App\Models\SubCategory;
 
 class CategoryController extends Controller
 {
@@ -57,6 +56,23 @@ class CategoryController extends Controller
     }
     function delete_level($id){
         Level::find($id)->delete();
+        return back();
+    }
+    function sub_category(){
+       $categories = Category::all();
+
+        return view('backend.category.subcategory',compact('categories'));
+    }
+    function store_subcategory(Request $request){
+
+        SubCategory::insert([
+            'category_id'       => $request->category_id,
+            'subcategory_name'  => $request->sub_name,
+        ]);
+        return back()->with('success','Subcategory added successfully');
+    }
+    function delete_subcategory($id){
+        SubCategory::find($id)->delete();
         return back();
     }
 }
