@@ -7,6 +7,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -63,6 +64,11 @@ Route::get('sign/up',[CustomerController::class,'sign_up'])->middleware(['auth',
 Route::get('sign/in',[CustomerController::class,'sign_in'])->middleware(['auth', 'verified'])->name('sign.in');
 Route::get('course',[FrontendController::class,'course'])->middleware(['auth', 'verified'])->name('course');
 
+// Students//
+Route::get('edit/profile',[StudentController::class,'edit_profile'])->middleware(['auth', 'verified'])->name('edit.profile');
+Route::get('student/dashboard',[StudentController::class,'student_dashboard'])->middleware(['auth', 'verified'])->name('student.dashboard');
+Route::post('store/signup',[StudentController::class,'store_signup'])->middleware(['auth', 'verified'])->name('store.signup');
+Route::post('log/in',[StudentController::class,'log_in'])->middleware(['auth', 'verified'])->name('log.in');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

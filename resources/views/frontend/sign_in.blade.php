@@ -140,22 +140,35 @@
 							<p class="lead mb-4">Nice to see you! Please log in with your account.</p>
 
 							<!-- Form START -->
-							<form>
+							<form action="{{ route('log.in') }}" method="POST">
+                                @csrf
 								<!-- Email -->
 								<div class="mb-4">
 									<label for="exampleInputEmail1" class="form-label">Email address *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
-										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1">
+										<input type="text" class="form-control border-0 bg-light" name="email">
 									</div>
+                                    @error('email')
+                                    <strong class="text-danger">{{ $message }}</strong>
+                                    @enderror
+                                    @if (session('nt_exists'))
+                                    <div class="alert alert-danger">{{ session('nt_exists') }}</div>
+                                    @endif
 								</div>
 								<!-- Password -->
 								<div class="mb-4">
 									<label for="inputPassword5" class="form-label">Password *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5">
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" name="password" >
 									</div>
+                                    @error('password')
+                                    <strong class="text-danger">{{ $message }}</strong>
+                                    @enderror
+                                     @if (session('wrong'))
+                                    <div class="alert alert-danger">{{ session('wrong') }}</div>
+                                    @endif
 									<div id="passwordHelpBlock" class="form-text">
 										Your password must be 8 characters at least
 									</div>
@@ -175,33 +188,15 @@
 								<!-- Button -->
 								<div class="align-items-center mt-0">
 									<div class="d-grid">
-										<button class="btn btn-primary mb-0" type="button">Login</button>
+										<button class="btn btn-primary mb-0" type="submit">Login</button>
 									</div>
 								</div>
 							</form>
 							<!-- Form END -->
 
-							<!-- Social buttons and divider -->
-							<div class="row">
-								<!-- Divider with text -->
-								<div class="position-relative my-4">
-									<hr>
-									<p class="small position-absolute top-50 start-50 translate-middle bg-body px-5">Or</p>
-								</div>
-
-								<!-- Social btn -->
-								<div class="col-xxl-6 d-grid">
-									<a href="#" class="btn bg-google mb-2 mb-xxl-0"><i class="fab fa-fw fa-google text-white me-2"></i>Login with Google</a>
-								</div>
-								<!-- Social btn -->
-								<div class="col-xxl-6 d-grid">
-									<a href="#" class="btn bg-facebook mb-0"><i class="fab fa-fw fa-facebook-f me-2"></i>Login with Facebook</a>
-								</div>
-							</div>
-
 							<!-- Sign up link -->
 							<div class="mt-4 text-center">
-								<span>Don't have an account? <a href="sign-up.html">Signup here</a></span>
+								<span>Don't have an account? <a href="{{ route('sign.up') }}">Signup here</a></span>
 							</div>
 						</div>
 					</div> <!-- Row END -->

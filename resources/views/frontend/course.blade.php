@@ -28,7 +28,6 @@
 
 			<!-- Item -->
             @foreach ($categories as $cat)
-
 			<div class="col-sm-6 col-md-4 col-xl-3">
 				<div class="card card-body bg-orange bg-opacity-10 text-center position-relative btn-transition p-4">
 					<!-- Image -->
@@ -40,7 +39,6 @@
 					<h6 class="mb-0">{{ $cat->rel_to_course->sum('total_lecture') }} Lectures</h6>
 				</div>
 			</div>
-
              @endforeach
 
 

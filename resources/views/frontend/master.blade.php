@@ -118,27 +118,26 @@
 			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
 
 				<!-- Nav category menu START -->
-				<ul class="navbar-nav navbar-nav-scroll me-auto">
-					<!-- Nav item 1 Demos -->
-					<li class="nav-item dropdown dropdown-menu-shadow-stacked">
-						<a class="nav-link bg-primary bg-opacity-10 rounded-3 text-primary px-3 py-3 py-xl-0" href="#" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-ui-radios-grid me-2"></i><span>Category</span></a>
-						<ul class="dropdown-menu" aria-labelledby="categoryMenu">
+				<ul class="navbar-nav me-auto">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-ui-radios-grid me-2"></i> Category
+        </a>
 
-							<!-- Dropdown submenu -->
-                            @foreach ($categories as $category)
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">{{ $category->category_name }}</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<!-- dropdown submenu open right -->
-								</ul>
-							</li>
-                            @endforeach
+        <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+            @foreach ($categories as $category)
+                <li>
+                    <a class="dropdown-item" href="#">
+                        {{ $category->category_name }}
+                    </a>
+                </li>
+            @endforeach
 
-
-							<li> <a class="dropdown-item bg-primary text-primary bg-opacity-10 rounded-2 mb-0" href="#">View all categories</a></li>
-						</ul>
-					</li>
-				</ul>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-primary" href="#">View all categories</a></li>
+        </ul>
+    </li>
+</ul>
 				<!-- Nav category menu END -->
 
 				<!-- Nav Main menu START -->
@@ -412,9 +411,9 @@
     </div>
 </div>
 <!-- Signout button  -->
-			<div class="navbar-nav d-none d-lg-inline-block">
+			{{-- <div class="navbar-nav d-none d-lg-inline-block">
 				<a href="{{ route('sign.up') }}" class="btn btn-danger-soft mb-0"><i class="fas fa-sign-in-alt me-2"></i>Sign Up</a>
-			</div>
+			</div> --}}
             <div class="card">
             <div class="mb-3">
 			<div class="navbar-nav d-none d-lg-inline-block">
@@ -447,7 +446,7 @@
 					</li>
 					<li> <hr class="dropdown-divider"></li>
 					<!-- Links -->
-					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+					<li><a class="dropdown-item" href="{{ route('edit.profile') }}"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
 					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
