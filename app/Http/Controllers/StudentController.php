@@ -48,4 +48,10 @@ class StudentController extends Controller
             return back()->with('nt_exists','Email does not exists');
         }
     }
+    function my_courses(){
+        return view('frontend.my_courses');
+    }
+    function payment_info(){
+        return view('frontend.payment_info');
+    }
 }

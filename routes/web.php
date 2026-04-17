@@ -69,6 +69,8 @@ Route::get('edit/profile',[StudentController::class,'edit_profile'])->middleware
 Route::get('student/dashboard',[StudentController::class,'student_dashboard'])->middleware(['auth', 'verified'])->name('student.dashboard');
 Route::post('store/signup',[StudentController::class,'store_signup'])->middleware(['auth', 'verified'])->name('store.signup');
 Route::post('log/in',[StudentController::class,'log_in'])->middleware(['auth', 'verified'])->name('log.in');
+Route::get('my/courses',[StudentController::class,'my_courses'])->middleware(['auth', 'verified'])->name('my.courses');
+Route::get('payment/info',[StudentController::class,'payment_info'])->middleware(['auth', 'verified'])->name('payment.info');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

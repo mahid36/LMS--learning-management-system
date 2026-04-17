@@ -89,10 +89,10 @@ Page content START -->
 							<div class="list-group list-group-dark list-group-borderless collapse-list">
 								<a class="list-group-item {{ request()->routeIs('student.dashboard') ? 'active' : '' }} " href="{{ route('student.dashboard') }}"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
 								<a class="list-group-item" href="student-subscription.html"><i class="bi bi-card-checklist fa-fw me-2"></i>My Subscriptions</a>
-								<a class="list-group-item" href="student-course-list.html"><i class="bi bi-basket fa-fw me-2"></i>My Courses</a>
+								<a class="list-group-item {{ request()->routeIs('my.courses') ? 'active' : '' }}" href="{{ route('my.courses') }}"><i class="bi bi-basket fa-fw me-2"></i>My Courses</a>
 								<a class="list-group-item" href="student-course-resume.html"><i class="far fa-fw fa-file-alt me-2"></i>Course Resume</a>
 								<a class="list-group-item" href="student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Quiz</a>
-								<a class="list-group-item" href="student-payment-info.html"><i class="bi bi-credit-card-2-front fa-fw me-2"></i>Payment Info</a>
+								<a class="list-group-item  {{ request()->routeIs('payment.info') ? 'active' : '' }}" href="{{ route('payment.info') }}"><i class="bi bi-credit-card-2-front fa-fw me-2"></i>Payment Info</a>
 								<a class="list-group-item" href="student-bookmark.html"><i class="bi bi-cart-check fa-fw me-2"></i>Wishlist</a>
 								<a class="list-group-item {{ request()->routeIs('edit.profile') ? 'active' : '' }}" href="{{ route('edit.profile') }}"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a>
 
