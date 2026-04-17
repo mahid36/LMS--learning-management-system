@@ -19,14 +19,15 @@ Page Banner START -->
 						<!-- Avatar -->
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative mt-n3">
-								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="{{asset('frontend_asset')}}/images/avatar/09.jpg" alt="">
+								<img class="avatar-img rounded-circle border border-white border-3 shadow"
+                                src="{{ asset('uploads/student/' . Auth::guard('student')->user()->image) }}" alt="">
 								<span class="badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3">Pro</span>
 							</div>
 						</div>
 						<!-- Profile info -->
 						<div class="col d-sm-flex justify-content-between align-items-center">
 							<div>
-								<h1 class="my-1 fs-4">Lori Stevens</h1>
+								<h1 class="my-1 fs-4">{{ Auth::guard('student')->user()->name }}</h1>
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6">255</span>
@@ -98,7 +99,7 @@ Page content START -->
 
 								<a class="list-group-item" href="instructor-setting.html"><i class="bi bi-gear fa-fw me-2"></i>Settings</a>
 								<a class="list-group-item" href="instructor-delete-account.html"><i class="bi bi-trash fa-fw me-2"></i>Delete Profile</a>
-								<a class="list-group-item text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
+								<a class="list-group-item text-danger bg-danger-soft-hover" href="{{ route('sign.out') }}"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 								<!-- Collapse menu -->
 								<a class="list-group-item" data-bs-toggle="collapse" href="#collapseauthentication" role="button" aria-expanded="false" aria-controls="collapseauthentication">
 									<i class="bi bi-lock fa-fw me-2"></i>Dropdown level

@@ -11,6 +11,7 @@ class Student extends Authenticatable
 {
      use HasFactory, Notifiable;
     protected $guard = 'student';
+    protected $guarded = ['id'];
      protected $hidden = [
         'password',
         'remember_token',
