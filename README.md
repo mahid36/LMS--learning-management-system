@@ -1,60 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 LMS — Learning Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![GitHub repo size](https://img.shields.io/github/repo-size/mahid36/LMS--learning-management-system?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/mahid36/LMS--learning-management-system?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/mahid36/LMS--learning-management-system?style=for-the-badge)
 
-## About Laravel
+> A web-based Learning Management System for managing courses, students, instructors, and assessments efficiently. Built with Laravel for scalable and interactive e-learning experiences.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📸 Screenshots
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🏠 Homepage
+![Homepage](screenshots/home.png)
 
-## Learning Laravel
+### 🎓 Student Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 📚 Course List
+![Courses](screenshots/courses.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👤 Edit Profile
+![Edit Profile](screenshots/edit_profile.png)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ✨ Features
 
-### Premium Partners
+### 👨‍🎓 Student Panel
+- ✅ Student Registration & Login
+- ✅ Custom Student Guard Authentication
+- ✅ Student Dashboard
+- ✅ Profile Update (Name, Email, Username, Phone, Location, Education)
+- ✅ Profile Picture Upload
+- ✅ Password Update with Current Password Verification
+- ✅ My Courses List with Progress Bar
+- ✅ Payment Info / Billing History
+- ✅ Wishlist
+- ✅ Course Resume
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 📚 Course Management
+- ✅ Course Browsing
+- ✅ Course Details
+- ✅ Course Progress Tracking
+- ✅ Quiz System
 
-## Contributing
+### 🔐 Authentication & Security
+- ✅ Custom Guard for Student
+- ✅ Middleware Protected Routes
+- ✅ Password Hashing with bcrypt
+- ✅ Session Management
+- ✅ Form Validation with Error Messages
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🛠️ Tech Stack
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## ⚙️ Installation
 
-## License
+```bash
+# Repository clone করুন
+git clone https://github.com/mahid36/LMS--learning-management-system.git
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# learning-management-system
+# Project folder এ যান
+cd LMS--learning-management-system
+
+# Dependencies install করুন
+composer install
+npm install
+
+# .env file setup করুন
+cp .env.example .env
+php artisan key:generate
+
+# Database migrate করুন
+php artisan migrate
+
+# Server run করুন
+php artisan serve
+```
+
+---
+
+## 🗂️ Project Structure
+
+```
+├── app/
+│   ├── Http/Controllers/
+│   ├── Models/
+│       ├── Student.php
+├── resources/
+│   ├── views/
+│   │   ├── frontend/
+│   │   │   ├── student/
+│   │   │   │   ├── dashboard.blade.php
+│   │   │   │   ├── edit-profile.blade.php
+│   │   │   │   ├── course-list.blade.php
+├── routes/
+│   ├── web.php
+├── screenshots/
+└── README.md
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first.
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 👨‍💻 Author
+
+**Mahid**
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mahid36)
