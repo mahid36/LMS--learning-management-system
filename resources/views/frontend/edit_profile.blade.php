@@ -25,7 +25,9 @@
                                 <span class="avatar avatar-xl">
                                     <img id="uploadfile-1-preview"
                                         class="avatar-img rounded-circle border border-white border-3 shadow"
-                                        src="{{ asset('uploads/student/' . Auth::guard('student')->user()->image) }}" alt="">
+                                        src="{{Auth::guard('student')->user()->image
+                            ? asset('uploads/student/' . Auth::guard('student')->user()->image)
+                                : asset('uploads/student/default.jpg')}}" alt="">
                                 </span>
                                 <!-- Remove btn -->
                                 <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
@@ -39,19 +41,20 @@
                     <!-- Full name -->
                     <div class="col-12">
                         <label class="form-label">Full name</label>
-                        <input type="text" class="form-control" name="name" value="{{ Auth::guard('student')->user()->name }}">
+                        <input type="text" class="form-control" name="name" value="{{Auth::guard('student')->user()->name}}">
                     </div>
 
                     <!-- Username -->
                     <div class="col-md-6">
                         <label class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username">
+                        <input type="text" class="form-control" name="username" >
                     </div>
+
 
                     <!-- Email id -->
                     <div class="col-md-6">
                         <label class="form-label">Email id</label>
-                        <input class="form-control" name="email"type="text" value="{{ Auth::guard('student')->user()->email }}">
+                        <input class="form-control" name="email"type="text" value="{{Auth::guard('student')->user()->email}}">
                     </div>
 
                     <div class="col-lg-6">

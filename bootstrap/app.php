@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-
+use Illuminate\Auth\Middleware\Authenticate;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
+          Authenticate::redirectUsing(function ($request) { // ✅ এটা add করুন
+            return $request->expectsJson() ? null : route('sign.in');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -60,9 +60,9 @@ Route::get('delete/instructor/{id}',[InstructorController::class,'delete_instruc
 //frontend pages//
 
 Route::get('/',[FrontendController::class,'index'])->name('index');
-Route::get('sign/up',[CustomerController::class,'sign_up'])->middleware(['auth', 'verified'])->name('sign.up');
-Route::get('sign/in',[CustomerController::class,'sign_in'])->middleware(['auth', 'verified'])->name('sign.in');
-Route::get('course',[FrontendController::class,'course'])->middleware(['auth', 'verified'])->name('course');
+Route::get('sign/up',[CustomerController::class,'sign_up'])->name('sign.up');
+Route::get('sign/in',[CustomerController::class,'sign_in'])->name('sign.in');
+Route::get('course',[FrontendController::class,'course'])->middleware(['auth:student', 'verified'])->name('course');
 
 // Students//
 Route::get('edit/profile',[StudentController::class,'edit_profile'])->middleware(['auth', 'verified'])->name('edit.profile');

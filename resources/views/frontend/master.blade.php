@@ -508,12 +508,15 @@
                 <!-- Main navbar END -->
 
                 <!-- Profile START -->
+                @auth('student')
                 <div class="dropdown ms-1 ms-lg-0">
                     <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
                         data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img class="avatar-img rounded-circle"
-                            src="{{ asset('uploads/student/' . Auth::guard('student')->user()->image) }}" alt="avatar">
+                            src="{{ Auth::guard('student')->user()->image
+                            ? asset('uploads/student/' . Auth::guard('student')->user()->image)
+                                : asset('uploads/student/default.jpg')}}" alt="avatar">
                     </a>
                     <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
                         aria-labelledby="profileDropdown">
@@ -523,11 +526,13 @@
                                 <!-- Avatar -->
                                 <div class="avatar me-3">
                                     <img class="avatar-img rounded-circle shadow"
-                                        src="{{ asset('uploads/student/' . Auth::guard('student')->user()->image) }}" alt="avatar">
+                                        src="{{Auth::guard('student')->user()->image
+                                    ? asset('uploads/student/' . Auth::guard('student')->user()->image)
+                                    : asset('uploads/student/default.jpg')}}" alt="avatar">
                                 </div>
                                 <div>
-                                    <a class="h6" href="#">{{  Auth::guard('student')->user()->name }}</a>
-                                    <p class="small m-0">{{  Auth::guard('student')->user()->email }}</p>
+                                    <a class="h6" href="#">{{Auth::guard('student')->user()->name}}</a>
+                                    <p class="small m-0">{{Auth::guard('student')->user()->email}}</p>
                                 </div>
                             </div>
                         </li>
@@ -581,6 +586,7 @@
                         <!-- Dark mode options END-->
                     </ul>
                 </div>
+                @endauth
                 <!-- Profile START -->
             </div>
         </nav>

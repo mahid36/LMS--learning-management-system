@@ -34,6 +34,7 @@ class StudentController extends Controller
             'password'  =>  bcrypt($request->password),
             'created_at' =>  Carbon::now(),
         ]);
+
         if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('index');
         }
@@ -47,12 +48,18 @@ class StudentController extends Controller
             'password'  => 'required',
         ]);
         if (Student::where('email', $request->email)->exists()) {
+
             if (Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
                 return redirect()->route('index');
-            } else {
+            }
+            else {
+
                 return back()->with('wrong', 'Wrong Password');
             }
-        } else {
+        }
+        else {
+
             return back()->with('nt_exists', 'Email does not exists');
         }
     }
@@ -94,10 +101,12 @@ class StudentController extends Controller
                         'password'  => bcrypt($request->password),
                     ]);
                     return back()->with('success', 'Profile Updated');
-                } else {
+                }
+                else {
                     return back()->with('wrng_pass', 'Current Password Is Incorrect');
                 }
-            } else {
+            }
+            else {
                 //password ache image nei
                 if (password_verify($request->current_password, Auth::guard('student')->user()->password)) {
 
@@ -111,11 +120,13 @@ class StudentController extends Controller
                         'password'  => bcrypt($request->password),
                     ]);
                     return back()->with('success', 'Profile Updated');
-                } else {
+                }
+                else {
                     return back()->with('wrng_pass', 'Current Password Is Incorrect');
                 }
             }
-        } else {
+        }
+        else {
             if ($request->image) {
                 //password nei image ache
 
@@ -136,7 +147,8 @@ class StudentController extends Controller
                     'image'     => $file_name,
                 ]);
                 return back()->with('success', 'Profile Updated');
-            } else {
+            }
+             else {
                 //password nei image nei
                 Student::find(Auth::guard('student')->id())->update([
                     'name'  => $request->name,

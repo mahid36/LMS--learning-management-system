@@ -20,7 +20,9 @@ Page Banner START -->
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative mt-n3">
 								<img class="avatar-img rounded-circle border border-white border-3 shadow"
-                                src="{{ asset('uploads/student/' . Auth::guard('student')->user()->image) }}" alt="">
+                                src="{{Auth::guard('student')->user()->image
+                            ? asset('uploads/student/' . Auth::guard('student')->user()->image)
+                                : asset('uploads/student/default.jpg') }}" alt="">
 								<span class="badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3">Pro</span>
 							</div>
 						</div>
