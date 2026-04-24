@@ -373,7 +373,7 @@ Popular course START -->
 									<a href="#" class="h6 mb-0"><i class="far fa-heart"></i></a>
 								</div>
 								<!-- Title -->
-								<h5 class="card-title fw-normal"><a href="{{ route('course.details',$course->id) }}">{{ $course->course_title }}</a></h5>
+								<h5 class="card-title fw-normal"><a href="{{ route('course.details',$course->slug) }}">{{ $course->course_title }}</a></h5>
 								<p class="mb-2 text-truncate-2">{{ $course->short_desp }}</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">

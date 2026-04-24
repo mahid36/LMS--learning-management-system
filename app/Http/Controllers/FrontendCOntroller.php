@@ -25,7 +25,11 @@ class FrontendCOntroller extends Controller
              'languages' =>  $languages ,
         ]);
     }
-    function course_details($id){
-        return view('frontend.course-details');
+    function course_details($slug){
+        $course_id = Course::where('slug',$slug)->first()->id;
+        $course_info = Course::find($course_id);
+        return view('frontend.course-details',[
+            'course_info' =>$course_info,
+        ]);
     }
 }

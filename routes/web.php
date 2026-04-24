@@ -62,7 +62,7 @@ Route::get('delete/instructor/{id}',[InstructorController::class,'delete_instruc
 Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('sign/up',[CustomerController::class,'sign_up'])->name('sign.up');
 Route::get('sign/in',[CustomerController::class,'sign_in'])->name('sign.in');
-Route::get('course/details{id}',[FrontendCOntroller::class,'course_details'])->name('course.details');
+Route::get('course/details{slug}',[FrontendCOntroller::class,'course_details'])->name('course.details');
 Route::get('course',[FrontendController::class,'course'])->middleware(['auth:student', 'verified'])->name('course');
 
 // Students//
