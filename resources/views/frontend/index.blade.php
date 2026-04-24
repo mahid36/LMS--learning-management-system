@@ -369,11 +369,11 @@ Popular course START -->
 							<div class="card-body pb-0">
 								<!-- Badge and favorite -->
 								<div class="d-flex justify-content-between mb-2">
-									<a href="#" class="badge bg-purple bg-opacity-10 text-purple">{{ $course->rel_to_level->level_name }}</a>
+									<a href="" class="badge bg-purple bg-opacity-10 text-purple">{{ $course->rel_to_level->level_name }}</a>
 									<a href="#" class="h6 mb-0"><i class="far fa-heart"></i></a>
 								</div>
 								<!-- Title -->
-								<h5 class="card-title fw-normal"><a href="#">{{ $course->course_title }}</a></h5>
+								<h5 class="card-title fw-normal"><a href="{{ route('course.details',$course->id) }}">{{ $course->course_title }}</a></h5>
 								<p class="mb-2 text-truncate-2">{{ $course->short_desp }}</p>
 								<!-- Rating star -->
 								<ul class="list-inline mb-0">

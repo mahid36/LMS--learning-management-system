@@ -25,4 +25,7 @@ class FrontendCOntroller extends Controller
              'languages' =>  $languages ,
         ]);
     }
+    function course_details($id){
+        return view('frontend.course-details');
+    }
 }
