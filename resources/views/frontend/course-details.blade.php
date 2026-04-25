@@ -658,7 +658,6 @@ Page content START -->
                                                 <h3 class="fw-bold mb-0 me-2">&#2547; {{ $course_info->course_price }}</h3>
                                               @endif
 										</div>
-										<p class="mb-0 text-danger"><i class="fas fa-stopwatch me-2"></i>5 days left at this price</p>
 									</div>
 
 									<!-- Share button with dropdown -->
@@ -680,8 +679,13 @@ Page content START -->
 								<!-- Buttons -->
 								<div class="mt-3 d-sm-flex justify-content-sm-between">
 									<a href="#" class="btn btn-outline-primary mb-0">Free trial</a>
-									<a href="#" class="btn btn-success mb-0">Add to cart</a>
+                                    <form action="{{ route('add.cart') }}" method="POST">
+                                        @csrf
+                                    <input type="hidden" name="course_id" value="{{ $course_info->id }}">
+									<button type="submit" class="btn btn-success mb-0">Add to cart</button>
+                                </form>
 								</div>
+
 							</div>
 						</div>
 						<!-- Video END -->
@@ -1023,4 +1027,44 @@ Listed courses END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
+@endsection
+@section('footer_script')
+
+
+@if (session('success'))
+    <script>
+        const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+        });
+        Toast.fire({
+        icon: "success",
+        title: '{{ session('success') }}'
+        });
+    </script>
+    @endif
+
+    @if (session('already'))
+<script>
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true
+});
+
+Toast.fire({
+    icon: "warning",
+    title: '{{ session('already') }}'
+});
+</script>
+@endif
 @endsection

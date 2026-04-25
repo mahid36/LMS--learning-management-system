@@ -8,6 +8,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -74,6 +75,11 @@ Route::post('log/in',[StudentController::class,'log_in'])->middleware(['auth', '
 Route::get('my/courses',[StudentController::class,'my_courses'])->middleware(['auth', 'verified'])->name('my.courses');
 Route::get('payment/info',[StudentController::class,'payment_info'])->middleware(['auth', 'verified'])->name('payment.info');
 Route::get('sign/out',[StudentController::class,'sign_out'])->middleware(['auth', 'verified'])->name('sign.out');
+
+//cart//
+
+Route::post('add/cart',[CartController::class,'add_cart'])->middleware(['auth', 'verified'])->name('add.cart');
+Route::get('remove/cart/{id}',[CartController::class,'remove_cart'])->middleware(['auth', 'verified'])->name('remove.cart');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

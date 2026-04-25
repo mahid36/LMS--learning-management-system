@@ -201,7 +201,7 @@
                                     <a class="dropdown-item dropdown-toggle" href="#"><i
                                             class="fas fa-user-graduate fa-fw me-1"></i>Student</a>
                                     <ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-                                        <li> <a class="dropdown-item" href="student-dashboard.html"><i
+                                        <li> <a class="dropdown-item" href="{{ route('student.dashboard') }}"><i
                                                     class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
                                         <li> <a class="dropdown-item" href="student-subscription.html"><i
                                                     class="bi bi-card-checklist fa-fw me-1"></i>My Subscriptions</a>
@@ -212,7 +212,7 @@
                                                     class="far fa-fw fa-file-alt me-1"></i>Course Resume</a> </li>
                                         <li> <a class="dropdown-item" href="student-quiz.html"><i
                                                     class="bi bi-question-diamond fa-fw me-1"></i>Quiz </a> </li>
-                                        <li> <a class="dropdown-item" href="student-payment-info.html"><i
+                                        <li> <a class="dropdown-item" href="{{ route('payment.info') }}"><i
                                                     class="bi bi-credit-card-2-front-fill fa-fw me-1"></i>Payment
                                                 Info</a> </li>
                                         <li> <a class="dropdown-item" href="student-bookmark.html"><i
@@ -236,32 +236,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <!-- Dropdown Level -->
-                                <li class="dropdown-submenu dropend">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Dropdown levels</a>
-                                    <ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
 
-                                        <!-- dropdown submenu open right -->
-                                        <li class="dropdown-submenu dropend">
-                                            <a class="dropdown-item dropdown-toggle" href="#">Dropdown (end)</a>
-                                            <ul class="dropdown-menu" data-bs-popper="none">
-                                                <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-                                                <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-                                            </ul>
-                                        </li>
-                                        <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-
-                                        <!-- dropdown submenu open left -->
-                                        <li class="dropdown-submenu dropstart">
-                                            <a class="dropdown-item dropdown-toggle" href="#">Dropdown
-                                                (start)</a>
-                                            <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
-                                                <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-                                                <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-                                            </ul>
-                                        </li>
-                                        <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </li>
 
@@ -415,7 +390,7 @@
                                     <i class="bi bi-cart3 fa-fw"></i>
                                 </a>
                                 <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark mt-2 ms-n3">2</span>
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark mt-2 ms-n3">{{ App\Models\Cart:: where('student_id', Auth::guard('student')->id())->count() }}</span>
 
                                 <div
                                     class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0">
@@ -424,36 +399,21 @@
                                             <h5 class="m-0">Cart Items</h5>
                                         </div>
                                         <div class="card-body p-0">
+                                            @foreach (App\Models\Cart:: where('student_id', Auth::guard('student')->id())->get() as $cart)
                                             <div class="row p-3 g-2">
                                                 <div class="col-3">
-                                                    <img class="rounded-2" src="assets/images/book/02.jpg"
-                                                        alt="avatar">
+                                                    <img class="rounded-2" src="{{ asset('uploads/course/preview/'. $cart->rel_to_course->preview) }}"
+                                                        alt="avatar" style="height: 60px; width: 60px; object-fit: cover;" >
                                                 </div>
                                                 <div class="col-9">
                                                     <div class="d-flex justify-content-between">
-                                                        <h6 class="m-0">Angular 4 Tutorial</h6>
-                                                        <a href="#" class="small text-primary-hover"><i
+                                                        <h6 class="m-0">{{ $cart->rel_to_course->course_title }}</h6>
+                                                        <a href="{{ route('remove.cart',$cart->id) }}" class="small text-primary-hover"><i
                                                                 class="bi bi-x-lg"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <hr class="m-0">
-
-                                            <div class="row p-3 g-2">
-                                                <div class="col-3">
-                                                    <img class="rounded-2" src="assets/images/book/04.jpg"
-                                                        alt="avatar">
-                                                </div>
-                                                <div class="col-9">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="m-0">Graphic Design</h6>
-                                                        <a href="#" class="small text-primary-hover"><i
-                                                                class="bi bi-x-lg"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endforeach
                                         <div
                                             class="card-footer bg-transparent border-top py-3 text-center d-flex justify-content-between">
                                             <a href="#" class="btn btn-sm btn-light mb-0">View Cart</a>
@@ -753,12 +713,12 @@ Footer END -->
 
     <!-- Bootstrap JS -->
     <script src="{{ asset('frontend_asset') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Vendors -->
     <script src="{{ asset('frontend_asset') }}/vendor/tiny-slider/tiny-slider.js"></script>
     <script src="{{ asset('frontend_asset') }}/vendor/glightbox/js/glightbox.js"></script>
     <script src="{{ asset('frontend_asset') }}/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('footer_script')
     <!-- Template Functions -->
     <script src="{{ asset('frontend_asset') }}/js/functions.js"></script>
 
