@@ -88,10 +88,16 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="mb-3">
+                                <label class="form-label">Discount</label>
+                               <input type="text" class="form-control" name="discount">
+                            </div>
+                        </div>
+                        {{-- <div class="col-lg-5">
+                            <div class="mb-3">
                                 <label class="form-label">Discount price</label>
                                <input type="text" class="form-control" name="discount_price">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-5">
                             <div class="mb-3">
                                 <label class="form-label">Preview image</label>

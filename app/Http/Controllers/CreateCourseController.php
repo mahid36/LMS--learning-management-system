@@ -57,7 +57,7 @@ class CreateCourseController extends Controller
             'total_lecture' =>  $request->total_lecture,
             'course_price'  =>  $request->course_price,
             'discount'      =>  $request->discount,
-            'discount_price'=>  $request->discount_price -($request->course_price * $request->discount /100),
+            'discount_price' => $request->course_price - ($request->course_price * $request->discount / 100),
             'preview'       =>  $file_name,
             'instructor_id' =>  $request->instructor_id,
             'created_at'    =>  Carbon::now(),

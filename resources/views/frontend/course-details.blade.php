@@ -650,9 +650,13 @@ Page content START -->
 									<!-- Price and time -->
 									<div>
 										<div class="d-flex align-items-center">
-											<h3 class="fw-bold mb-0 me-2">&#2547; {{ $course_info->course_price }}</h3>
-											<span class="text-decoration-line-through mb-0 me-2"></span>
-											<span class="badge text-bg-orange mb-0">60% off</span>
+                                            @if ($course_info->discount)
+											<h3 class="fw-bold mb-0 me-2">&#2547; {{ $course_info->discount_price }}</h3>
+											<span class="text-decoration-line-through mb-0 me-2">{{ $course_info->course_price }}</span>
+											<span class="badge text-bg-orange mb-0">{{ $course_info->discount }}% off</span>
+                                            @else
+                                                <h3 class="fw-bold mb-0 me-2">&#2547; {{ $course_info->course_price }}</h3>
+                                              @endif
 										</div>
 										<p class="mb-0 text-danger"><i class="fas fa-stopwatch me-2"></i>5 days left at this price</p>
 									</div>
@@ -676,7 +680,7 @@ Page content START -->
 								<!-- Buttons -->
 								<div class="mt-3 d-sm-flex justify-content-sm-between">
 									<a href="#" class="btn btn-outline-primary mb-0">Free trial</a>
-									<a href="#" class="btn btn-success mb-0">Buy course</a>
+									<a href="#" class="btn btn-success mb-0">Add to cart</a>
 								</div>
 							</div>
 						</div>
