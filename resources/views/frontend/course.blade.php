@@ -13,18 +13,6 @@
 		</div>
 
 		<div class="row g-4">
-			<!-- Item -->
-			<div class="col-sm-6 col-md-4 col-xl-3">
-				<div class="card card-body bg-success bg-opacity-10 text-center position-relative btn-transition p-4">
-					<!-- Image -->
-					<div class="icon-xl bg-body mx-auto rounded-circle mb-3">
-						<img src="{{asset('frontend_asset')}}/images/element/data-science.svg" alt="">
-					</div>
-					<!-- Title -->
-					<h5 class="mb-2"><a href="#" class="stretched-link">Data Science</a></h5>
-					<h6 class="mb-0">15 Courses</h6>
-				</div>
-			</div>
 
 			<!-- Item -->
             @foreach ($categories as $cat)

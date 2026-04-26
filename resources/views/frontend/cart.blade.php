@@ -35,17 +35,6 @@ Page content START -->
 			<!-- Main content START -->
 			<div class="col-lg-8 mb-4 mb-sm-0">
 				<div class="card card-body p-4 shadow">
-					<!-- Alert -->
-					{{-- <div class="alert alert-danger alert-dismissible d-flex justify-content-between align-items-center fade show py-3 pe-2" role="alert">
-						<div>
-							<span class="fs-5 me-1">🔥</span>
-							These courses are at a limited discount, please checkout within<strong class="text-danger ms-1">2 days and 18 hours</strong>
-						</div>
-						<button type="button" class="btn btn-link mb-0 text-primary-hover text-end" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-					</div> --}}
-
-
-
 					<div class="table-responsive border-0 rounded-3">
 						<!-- Table START -->
 						<table class="table align-middle p-4 mb-0">
@@ -92,13 +81,14 @@ Page content START -->
 					<div class="row g-3 mt-2">
 						<div class="col-md-6">
 							<div class="input-group">
-								<input class="form-control form-control " placeholder="COUPON CODE">
-								<button type="button" class="btn btn-primary">Apply coupon</button>
+                                <form action="{{ route('cart') }}" method="GET" class="input-group">
+								<input class="form-control form-control " placeholder="COUPON CODE" name="coupon">
+								<button type="submit" class="btn btn-primary">Apply coupon</button>
 							</div>
-						</div>
-						<!-- Update button -->
-						<div class="col-md-6 text-md-end">
-							<button class="btn btn-primary mb-0" disabled>Update cart</button>
+                            @if (session('notExists'))
+                            <strong class="text-danger">{{ session('notExists') }}</strong>
+                            @endif
+                        </form>
 						</div>
 					</div>
 				</div>
@@ -115,16 +105,22 @@ Page content START -->
 					<!-- Price and detail -->
 					<ul class="list-group list-group-borderless mb-2">
 						<li class="list-group-item px-0 d-flex justify-content-between">
-							<span class="h6 fw-light mb-0">Original Price</span>
-							<span class="h6 fw-light mb-0 fw-bold">$500</span>
+							<span class="h6 fw-light mb-0">Sub Total</span>
+							<span class="h6 fw-light mb-0 fw-bold">&#2547;{{ $sub_total }}</span>
 						</li>
+                        @if ($coupon_discount)
 						<li class="list-group-item px-0 d-flex justify-content-between">
 							<span class="h6 fw-light mb-0">Coupon Discount</span>
-							<span class="text-danger">-$20</span>
+							<span class="text-danger">&#2547;{{$discount_amount}}</span>
 						</li>
+                            @endif
+
+                            @php
+                            $total = $sub_total - $discount_amount;
+                            @endphp
 						<li class="list-group-item px-0 d-flex justify-content-between">
 							<span class="h5 mb-0">Total</span>
-							<span class="h5 mb-0">$480</span>
+							<span class="h5 mb-0">&#2547;{{ $total }}</span>
 						</li>
 					</ul>
 
