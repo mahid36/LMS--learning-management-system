@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CouponController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -80,6 +81,13 @@ Route::get('sign/out',[StudentController::class,'sign_out'])->middleware(['auth'
 
 Route::post('add/cart',[CartController::class,'add_cart'])->middleware(['auth', 'verified'])->name('add.cart');
 Route::get('remove/cart/{id}',[CartController::class,'remove_cart'])->middleware(['auth', 'verified'])->name('remove.cart');
+Route::get('/cart',[CartController::class,'cart'])->middleware(['auth', 'verified'])->name('cart');
+
+//coupon//
+
+Route::get('/coupon',[CouponController::class,'coupon'])->middleware(['auth', 'verified'])->name('coupon');
+Route::post('/add/coupon',[CouponController::class,'add_coupon'])->middleware(['auth', 'verified'])->name('add.coupon');
+Route::get('/delete/coupon/{id}',[CouponController::class,'delete_coupon'])->middleware(['auth', 'verified'])->name('delete.coupon');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

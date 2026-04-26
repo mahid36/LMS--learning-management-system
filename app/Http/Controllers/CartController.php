@@ -28,4 +28,8 @@ class CartController extends Controller
         Cart::find($id)->delete();
         return back();
     }
+    function cart(){
+        $carts = Cart::all();
+        return view('frontend.cart',compact('carts'));
+    }
 }
