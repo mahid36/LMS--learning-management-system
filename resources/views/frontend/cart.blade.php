@@ -126,7 +126,7 @@ Page content START -->
 
 					<!-- Button -->
 					<div class="d-grid">
-						<a href="checkout.html" class="btn btn-lg btn-success">Proceed to Checkout</a>
+						<a href="{{ route('checkout') }}" class="btn btn-lg btn-success">Proceed to Checkout</a>
 					</div>
 
 					<!-- Content -->

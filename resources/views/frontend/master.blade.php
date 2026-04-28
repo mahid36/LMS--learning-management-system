@@ -8,6 +8,7 @@
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="StackBros">
     <meta name="description" content="Eduport- LMS, Education and Course Theme">
@@ -76,6 +77,8 @@
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&amp;family=Roboto:wght@400;500;700&amp;display=swap">
@@ -417,7 +420,7 @@
                                         <div
                                             class="card-footer bg-transparent border-top py-3 text-center d-flex justify-content-between">
                                             <a href="{{ route('cart') }}" class="btn btn-sm btn-light mb-0">View Cart</a>
-                                            <a href="#" class="btn btn-sm btn-success mb-0">Checkout</a>
+                                            <a href="{{ route('checkout') }}" class="btn btn-sm btn-success mb-0">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -718,6 +721,9 @@ Footer END -->
     <script src="{{ asset('frontend_asset') }}/vendor/glightbox/js/glightbox.js"></script>
     <script src="{{ asset('frontend_asset') }}/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
     @yield('footer_script')
     <!-- Template Functions -->
     <script src="{{ asset('frontend_asset') }}/js/functions.js"></script>

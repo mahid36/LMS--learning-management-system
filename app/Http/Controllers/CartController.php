@@ -57,7 +57,6 @@ class CartController extends Controller
 
         $sub_total += $cart->rel_to_course->course_price;
     }
-
 }
     //discount_amount//
          if($coupon_discount){
@@ -66,6 +65,10 @@ class CartController extends Controller
         else{
             $discount_amount=0;
         }
+
+        session(['coupon_discount' => $coupon_discount]);
+        session(['discount_amount' => $discount_amount]);
+        session(['sub_total'       => $sub_total]);
 
     return view('frontend.cart',[
         'carts' => $carts,
