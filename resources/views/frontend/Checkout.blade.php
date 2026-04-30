@@ -164,11 +164,11 @@ Page content START -->
                             $total = $sub_total - $discount_amount;
                             @endphp
                             <input type="hidden" value="{{ $discount_amount }}" name="coupon">
-                <li class="list-group-item px-0 d-flex justify-content-between">
-                  <span class="h5 mb-0">Total</span>
-                  <span class="h5 mb-0">&#2547;{{ $total }}</span>
-                </li>
-              </ul>
+                        <li class="list-group-item px-0 d-flex justify-content-between">
+                        <span class="h5 mb-0">Total</span>
+                        <span class="h5 mb-0">&#2547;{{ $total }}</span>
+                        </li>
+                        </ul>
 							<!-- Button -->
 							<div class="d-grid">
 								<button type="submit" class="btn btn-lg btn-success">Place Order</button>

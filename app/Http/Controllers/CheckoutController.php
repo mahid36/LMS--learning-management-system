@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\City;
 use App\Models\Country;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
@@ -32,6 +34,10 @@ class CheckoutController extends Controller
             return $str;
     }
     function confirm_checkout(Request $request){
+        $sub_total       = session('sub_total', 0);
+        $discount_amount = session('discount_amount', 0);
+        $total           = $sub_total - $discount_amount;
+
       $request->validate([
         'mobile' => 'required',
         'postal_code'=>'required',
@@ -39,6 +45,22 @@ class CheckoutController extends Controller
         'country_id'=>'required',
         'city_id'=>'required',
       ]);
+      Order::insert([
+        'order_id'  =>uniqid(),
+        'student_id'=>Auth::guard('student')->id(),
+        'total'     =>$total,
+        'discount'  =>$discount_amount,
+        'payment_method'=>$request->payment_method,
+        'name'  =>$request->name,
+        'email' =>$request->email,
+        'mobile'=>$request->mobile,
+        'country'=>$request->country_id,
+        'city'=>$request->city_id,
+        'postal_code'=>$request->postal_code,
+        'address'=>$request->address,
+        'created_at'=>Carbon::now(),
+      ]);
+      return back();
 
     }
 }
