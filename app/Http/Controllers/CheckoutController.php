@@ -5,6 +5,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\OrderProduct;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,8 +46,11 @@ class CheckoutController extends Controller
         'country_id'=>'required',
         'city_id'=>'required',
       ]);
+
+       $order_id = uniqid();
+
       Order::insert([
-        'order_id'  =>uniqid(),
+        'order_id'  =>$order_id,
         'student_id'=>Auth::guard('student')->id(),
         'total'     =>$total,
         'discount'  =>$discount_amount,
@@ -60,7 +64,18 @@ class CheckoutController extends Controller
         'address'=>$request->address,
         'created_at'=>Carbon::now(),
       ]);
-      return back();
+          $carts = Cart::where('student_id', Auth::guard('student')->id())->get();
+          foreach($carts as $cart){
 
+            OrderProduct::insert([
+                'order_id'=>$order_id,
+                'student_id'=>Auth::guard('student')->id(),
+                'course_id'=>$cart->course_id,
+                'price'=>$cart->rel_to_course->course_price,
+                'created_at'=>Carbon::now(),
+            ]);
+
+          }
+            return back();
     }
 }
