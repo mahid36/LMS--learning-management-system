@@ -13,6 +13,8 @@
                             <th>Image</th>
                             <th>Name</th>
                             <th>Category</th>
+                            <th>Email</th>
+                            <th>Number</th>
                             <th>Action</th>
                         </tr>
                         @foreach ($instructors as $index=>$ins )
@@ -21,8 +23,11 @@
                             <td>
                                 <img src="{{ asset('uploads/instructors/') }}/{{ $ins->instructor_image }} "  style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; object-fit: cover;">
                             </td>
+
                             <td>{{ $ins->instructor_name }}</td>
                             <td>{{ $ins->rel_to_category->category_name }}</td>
+                            <td>{{ $ins->email }}</td>
+                            <td>{{ $ins->phone }}</td>
                             <td>
                                 <a href="{{ route('delete.instructor',$ins->id) }}">
                                     <i class="fa-solid fa-trash" style="font-size: 22px; color: rgb(100, 96, 96); cursor: pointer"></i>
@@ -45,6 +50,14 @@
                     <div class="mb-3">
                         <label class="form-label">Enter instructor name</label>
                         <input type="text" class="form-control" name="instructor_name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Enter instructor email</label>
+                        <input type="text" class="form-control" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Enter instructor number</label>
+                        <input type="text" class="form-control" name="phone">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Enter image</label>

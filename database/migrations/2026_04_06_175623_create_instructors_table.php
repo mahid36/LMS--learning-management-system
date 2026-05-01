@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('instructor_image');
             $table->string('slug');
             $table->integer('category_id');
+            $table->string('email');
+            $table->string('phone');
             $table->timestamps();
         });
     }

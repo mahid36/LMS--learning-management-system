@@ -147,7 +147,7 @@ Page content START -->
 								<!-- Email address -->
 								<div class="col-12">
 									<ul class="list-group list-group-borderless mb-0">
-										<li class="list-group-item pb-0">Mail ID:<a href="#" class="ms-2">hello@email.com</a></li>
+										<li class="list-group-item pb-0">Mail ID:<a href="#" class="ms-2">{{ $course_info->rel_to_instructor->email }}</a></li>
 										<li class="list-group-item pb-0">Web:<a href="#" class="ms-2">https://eduport.com</a></li>
 									</ul>
 								</div>

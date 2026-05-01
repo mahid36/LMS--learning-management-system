@@ -35,6 +35,8 @@ class InstructorController extends Controller
             'instructor_image'  =>  $file_name,
             'category_id'       =>  $request->category_id,
             'slug'              =>  $slug,
+            'email'              =>  $request->email,
+            'phone'              =>  $request->phone,
             'created_at'        =>  Carbon::now(),
         ]);
         return back();
