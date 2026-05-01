@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderProduct;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -63,9 +64,11 @@ class StudentController extends Controller
             return back()->with('nt_exists', 'Email does not exists');
         }
     }
-    function my_courses()
-    {
-        return view('frontend.my_courses');
+    function my_courses(){
+        $myCourse = OrderProduct::where('student_id',Auth::guard('student')->id())->get();
+        return view('frontend.my_courses',[
+            'myCourse'=>$myCourse,
+        ]);
     }
     function payment_info()
     {
@@ -162,4 +165,5 @@ class StudentController extends Controller
             }
         }
     }
+
 }
