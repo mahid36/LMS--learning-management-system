@@ -46,8 +46,49 @@ class CheckoutController extends Controller
         'country_id'=>'required',
         'city_id'=>'required',
       ]);
+          $order_id = uniqid();
 
-       $order_id = uniqid();
+          //SSL//
+      if($request->payment_method ==1){
+
+         Order::insert([
+        'order_id'  =>$order_id,
+        'student_id'=>Auth::guard('student')->id(),
+        'total'     =>$total,
+        'discount'  =>$discount_amount,
+        'payment_method'=>$request->payment_method,
+        'name'  =>$request->name,
+        'email' =>$request->email,
+        'mobile'=>$request->mobile,
+        'country'=>$request->country_id,
+        'city'=>$request->city_id,
+        'postal_code'=>$request->postal_code,
+        'address'=>$request->address,
+        'created_at'=>Carbon::now(),
+      ]);
+
+      }
+
+      //Stripe//
+
+        else if($request->payment_method == 2){
+             Order::insert([
+        'order_id'  =>$order_id,
+        'student_id'=>Auth::guard('student')->id(),
+        'total'     =>$total,
+        'discount'  =>$discount_amount,
+        'payment_method'=>$request->payment_method,
+        'name'  =>$request->name,
+        'email' =>$request->email,
+        'mobile'=>$request->mobile,
+        'country'=>$request->country_id,
+        'city'=>$request->city_id,
+        'postal_code'=>$request->postal_code,
+        'address'=>$request->address,
+        'created_at'=>Carbon::now(),
+      ]);
+
+    }
 
       Order::insert([
         'order_id'  =>$order_id,
@@ -76,6 +117,19 @@ class CheckoutController extends Controller
             ]);
 
           }
-            return back();
+           Cart::where('student_id', Auth::guard('student')->id())->delete();
+
+            return redirect()->route('order.success',$order_id);
     }
+    function order_success($id){
+         $sub_total       = session('sub_total', 0);
+        $discount_amount = session('discount_amount', 0);
+        $total           = $sub_total - $discount_amount;
+        return view('frontend.order_success',[
+            'total' =>$total,
+            'order_id' =>$id,
+        ]);
+    }
+
+
 }

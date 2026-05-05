@@ -95,6 +95,7 @@ Route::get('/delete/coupon/{id}',[CouponController::class,'delete_coupon'])->mid
 Route::get('/checkout',[CheckoutController::class,'checkout'])->middleware(['auth', 'verified'])->name('checkout');
 Route::post('/getCity',[CheckoutController::class,'getCity'])->name('getCity');
 Route::post('/confirm/checkout',[CheckoutController::class,'confirm_checkout'])->middleware(['auth', 'verified'])->name('confirm.checkout');
+Route::get('order/success/{id}',[CheckoutController::class,'order_success'])->middleware(['auth', 'verified'])->name('order.success');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
