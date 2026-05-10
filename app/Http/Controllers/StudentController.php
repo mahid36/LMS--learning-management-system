@@ -23,6 +23,7 @@ class StudentController extends Controller
     }
     function store_signup(Request $request)
     {
+
         $request->validate([
             'name'      => 'required',
             'email'     =>   ['required', 'unique:students'],
@@ -62,6 +63,7 @@ class StudentController extends Controller
         else {
 
             return back()->with('nt_exists', 'Email does not exists');
+
         }
     }
     function my_courses(){

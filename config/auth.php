@@ -73,7 +73,7 @@ return [
         ],
         'students' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', Student::class),
+           'model' => Student::class,
         ],
 
         // 'users' => [

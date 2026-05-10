@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
-          Authenticate::redirectUsing(function ($request) { // ✅ এটা add করুন
+          Authenticate::redirectUsing(function ($request) {
             return $request->expectsJson() ? null : route('sign.in');
         });
     })
