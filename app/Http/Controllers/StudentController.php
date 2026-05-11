@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OrderProduct;
 use App\Models\Student;
+use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
@@ -72,9 +73,11 @@ class StudentController extends Controller
             'myCourse'=>$myCourse,
         ]);
     }
-    function payment_info()
-    {
-        return view('frontend.payment_info');
+    function payment_info(){
+        $myorders =OrderProduct::where('student_id',Auth::guard('student')->id())->get();
+        return view('frontend.payment_info',[
+            'myorders'=>$myorders ,
+        ]);
     }
     function sign_out()
     {

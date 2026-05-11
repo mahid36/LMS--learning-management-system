@@ -1,186 +1,78 @@
 @extends('frontend.student_profile_master')
 @section('dashboard_content')
     <div class="col-lg-9">
-        <!-- Billing history START -->
         <div class="card bg-transparent border rounded-3">
-            <!-- Card header START -->
             <div class="card-header bg-transparent border-bottom">
                 <h3 class="mb-0">Billing history</h3>
             </div>
-            <!-- Card header END -->
-
-            <!-- Card body START -->
             <div class="card-body">
-                <!-- Title and select START -->
-                <div class="row g-3 align-items-center justify-content-between mb-4">
-                    <!-- Content -->
-                    <div class="col-md-8">
-                        <form class="rounded position-relative">
-                            <input class="form-control pe-5 bg-transparent" type="search" placeholder="Search"
-                                aria-label="Search">
-                            <button
-                                class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset"
-                                type="submit">
-                                <i class="fas fa-search fs-6 "></i>
-                            </button>
-                        </form>
+                @foreach ($myorders->groupBy('order_id') as $orderId => $items)
+                @php
+                    $firstItem = $items->first();
+                @endphp
+
+                <div class="card border mb-4">
+                    <div class="card-header bg-light py-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <span class="text-secondary small fw-bold text-uppercase">Order ID</span>
+                                <h6 class="mb-0 text-primary">#{{ $orderId }}</h6>
+                            </div>
+
+                            <div class="col-md-3 text-md-center">
+                                <span class="text-secondary small fw-bold text-uppercase">Payment Method</span>
+                                <div class="d-flex align-items-center justify-content-md-center mt-1">
+                                    <img src="{{ asset('frontend_asset') }}/images/client/mastercard.svg" class="h-20px me-2" alt="">
+                                    <span class="fw-bold small">{{ $firstItem->rel_to_order->payment_method_name  }}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 text-md-center">
+                                <span class="text-secondary small fw-bold text-uppercase d-block">Status</span>
+                                <span class="badge bg-success bg-opacity-10 text-success mt-1">Paid</span>
+                            </div>
+
+                            <div class="col-md-3 text-md-end">
+                                <a href="#" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-download me-1"></i>Invoice</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Select option -->
-                    <div class="col-md-3">
-                        <!-- Short by filter -->
-                        <form>
-                            <select class="form-select js-choice border-0 z-index-9 bg-transparent"
-                                aria-label=".form-select-sm">
-                                <option value="">Sort by</option>
-                                <option>Newest</option>
-                                <option>Oldest</option>
-                            </select>
-                        </form>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4">Course Name</th>
+                                        <th class="text-end pe-4">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($items as $item)
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon-sm bg-primary bg-opacity-10 text-primary rounded-2 me-2"><i class="bi bi-play-circle-fill"></i></div>
+                                                <h6 class="mb-0 fw-normal">{{ $item->rel_to_course->course_title }}</h6>
+                                            </div>
+                                        </td>
+                                        <td class="text-end pe-4 text-secondary">&#2547;{{ number_format($item->rel_to_course->discount ? $item->rel_to_course->discount_price : $item->rel_to_course->course_price) }}</td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot class="border-top-0">
+                                    <tr class="table-group-divider">
+                                        <td class="text-end fw-bold">Total Amount:</td>
+                                        <td class="text-end pe-4 fw-bold text-dark h6">&#2547;{{ number_format($firstItem->rel_to_order->total) }}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <!-- Title and select END -->
-
-                <!-- Student list table START -->
-                <div class="table-responsive border-0">
-                    <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
-                        <!-- Table head -->
-                        <thead>
-                            <tr>
-                                <th scope="col" class="border-0 rounded-start">Date</th>
-                                <th scope="col" class="border-0">Course name</th>
-                                <th scope="col" class="border-0">Payment method</th>
-                                <th scope="col" class="border-0">Status</th>
-                                <th scope="col" class="border-0">Total</th>
-                                <th scope="col" class="border-0 rounded-end">Action</th>
-                            </tr>
-                        </thead>
-                        <!-- Table body -->
-                        <tbody>
-                            <!-- Table item -->
-                            <tr>
-                                <!-- Date item -->
-                                <td>4/2/2023</td>
-
-                                <!-- Title item -->
-                                <td>
-                                    <h6 class="mt-2 mt-lg-0 mb-0"><a href="#">Sketch from A to Z: for app designer</a>
-                                    </h6>
-                                </td>
-
-                                <!-- Payment method item -->
-                                <td><img src="assets/images/client/mastercard.svg" class="h-40px" alt=""><span
-                                        class="ms-2">****4568</span></td>
-
-                                <!-- Status item -->
-                                <td>
-                                    <span class="badge bg-success bg-opacity-10 text-success">Paid</span>
-                                </td>
-
-                                <!-- total item -->
-                                <td>$350</td>
-
-                                <!-- Action item -->
-                                <td>
-                                    <a href="#" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i
-                                            class="bi bi-download"></i></a>
-                                </td>
-                            </tr>
-
-                            <!-- Table item -->
-                            <tr>
-                                <!-- Date item -->
-                                <td>10/1/2023</td>
-
-                                <!-- Title item -->
-                                <td>
-                                    <h6 class="mt-2 mt-lg-0 mb-0"><a href="#">Create a Design System in Figma</a></h6>
-                                </td>
-
-                                <!-- Payment method item -->
-                                <td><img src="assets/images/client/mastercard.svg" class="h-40px" alt=""><span
-                                        class="ms-2">****2588</span></td>
-
-                                <!-- Status item -->
-                                <td>
-                                    <span class="badge bg-success bg-opacity-10 text-success">Paid</span>
-                                </td>
-
-                                <!-- total item -->
-                                <td>$242</td>
-
-                                <!-- Action item -->
-                                <td>
-                                    <a href="#" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i
-                                            class="bi bi-download"></i></a>
-                                </td>
-                            </tr>
-
-                            <!-- Table item -->
-                            <tr>
-                                <!-- Date item -->
-                                <td>21/1/2023</td>
-
-                                <!-- Title item -->
-                                <td>
-                                    <h6 class="mt-2 mt-lg-0 mb-0"><a href="#">The Complete Web Development in
-                                            python</a></h6>
-                                </td>
-
-                                <!-- Payment method item -->
-                                <td><img src="assets/images/client/paypal.svg" class="w-80px" alt=""></td>
-
-                                <!-- Status item -->
-                                <td>
-                                    <span class="badge bg-orange bg-opacity-10 text-orange">Pending</span>
-                                </td>
-
-                                <!-- total item -->
-                                <td>$576</td>
-
-                                <!-- Action item -->
-                                <td>
-                                    <a href="#" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i
-                                            class="bi bi-download"></i></a>
-                                </td>
-                            </tr>
-
-                            <!-- Table item -->
-                            <tr>
-                                <!-- Date item -->
-                                <td>18/1/2023</td>
-
-                                <!-- Title item -->
-                                <td>
-                                    <h6 class="mt-2 mt-lg-0 mb-0"><a href="#">Deep Learning with React-Native</a></h6>
-                                </td>
-
-                                <!-- Payment method item -->
-                                <td><img src="assets/images/client/mastercard.svg" class="h-40px" alt=""><span
-                                        class="ms-2">****2588</span></td>
-
-                                <!-- Status item -->
-                                <td>
-                                    <span class="badge bg-danger bg-opacity-10 text-danger">Cancel</span>
-                                </td>
-
-                                <!-- total item -->
-                                <td>$425</td>
-
-                                <!-- Action item -->
-                                <td>
-                                    <a href="#" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i
-                                            class="bi bi-download"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                @endforeach
             </div>
-            <!-- Billing history END -->
         </div>
-    @endsection
+    </div>
+@endsection

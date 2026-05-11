@@ -10,4 +10,7 @@ class OrderProduct extends Model
     public Function rel_to_course(){
         return $this->belongsTo(Course::class,'course_id');
     }
+    public Function rel_to_order(){
+        return $this->belongsTo(Order::class,'order_id','order_id');
+    }
 }

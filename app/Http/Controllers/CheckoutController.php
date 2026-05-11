@@ -89,22 +89,6 @@ class CheckoutController extends Controller
       ]);
 
     }
-
-      Order::insert([
-        'order_id'  =>$order_id,
-        'student_id'=>Auth::guard('student')->id(),
-        'total'     =>$total,
-        'discount'  =>$discount_amount,
-        'payment_method'=>$request->payment_method,
-        'name'  =>$request->name,
-        'email' =>$request->email,
-        'mobile'=>$request->mobile,
-        'country'=>$request->country_id,
-        'city'=>$request->city_id,
-        'postal_code'=>$request->postal_code,
-        'address'=>$request->address,
-        'created_at'=>Carbon::now(),
-      ]);
           $carts = Cart::where('student_id', Auth::guard('student')->id())->get();
           foreach($carts as $cart){
 
