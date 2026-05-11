@@ -61,12 +61,22 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                                <tfoot class="border-top-0">
-                                    <tr class="table-group-divider">
-                                        <td class="text-end fw-bold">Total Amount:</td>
-                                        <td class="text-end pe-4 fw-bold text-dark h6">&#2547;{{ number_format($firstItem->rel_to_order->total) }}</td>
-                                    </tr>
-                                </tfoot>
+                             <tfoot class="border-top-0">
+                             @if($firstItem->rel_to_order->discount > 0)
+                                <tr>
+                                    <td class="text-end fw-bold pt-1" style="border: none;">Coupon Discount:</td>
+                                        <td class="text-end pe-4 fw-bold text-danger pb-0" style="border: none;">
+                                         - &#2547;{{ number_format($firstItem->rel_to_order->discount) }}
+                                    </td>
+                                </tr>
+                            @endif
+                         <tr>
+                              <td class="text-end fw-bold pt-1" style="border: none;">Total Amount:</td>
+                                <td class="text-end pe-4 fw-bold text-dark h6 pt-1" style="border: none;">
+                                     &#2547;{{ number_format($firstItem->rel_to_order->total) }}
+                                </td>
+                        </tr>
+                        </tfoot>
                             </table>
                         </div>
                     </div>

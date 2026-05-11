@@ -69,8 +69,10 @@ class StudentController extends Controller
     }
     function my_courses(){
         $myCourse = OrderProduct::where('student_id',Auth::guard('student')->id())->get();
+        $coupon_discount = session('coupon_discount', 0);
         return view('frontend.my_courses',[
             'myCourse'=>$myCourse,
+            'coupon_discount'=>$coupon_discount,
         ]);
     }
     function payment_info(){
