@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('postal_code');
             $table->string('address');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

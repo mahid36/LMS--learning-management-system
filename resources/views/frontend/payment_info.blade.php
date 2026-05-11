@@ -29,7 +29,13 @@
 
                             <div class="col-md-3 text-md-center">
                                 <span class="text-secondary small fw-bold text-uppercase d-block">Status</span>
-                                <span class="badge bg-success bg-opacity-10 text-success mt-1">Paid</span>
+                             @if ($firstItem->rel_to_order->status == 0)
+                                    <span class="badge bg-success text-white mt-1">Paid</span>
+                                @elseif ($firstItem->rel_to_order->status == 1)
+                                    <span class="badge bg-info text-white mt-1">Pending</span>
+                                @else
+                                    <span class="badge bg-danger text-white mt-1">Cancel</span>
+                                @endif
                             </div>
 
                             <div class="col-md-3 text-md-end">
@@ -57,7 +63,6 @@
                                             </div>
                                         </td>
                                         <td class="text-end pe-4 text-secondary">&#2547;{{ number_format($item->rel_to_course->discount ? $item->rel_to_course->discount_price : $item->rel_to_course->course_price) }}</td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>

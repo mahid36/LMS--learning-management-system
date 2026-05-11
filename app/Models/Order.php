@@ -19,5 +19,6 @@ class Order extends Model
         default => 'Unknown'
     };
 }
+    protected $guarded = ['id'];
 
 }
