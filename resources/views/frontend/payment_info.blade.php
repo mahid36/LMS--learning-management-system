@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="col-md-3 text-md-end">
-                                <a href="#" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-download me-1"></i>Invoice</a>
+                                <a href="{{ route('invoice',$firstItem->order_id) }}" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-download me-1"></i>Invoice</a>
                             </div>
                         </div>
                     </div>

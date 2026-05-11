@@ -93,6 +93,7 @@ Route::get('order/success/{id}',[CheckoutController::class,'order_success'])->mi
 //Order//
 Route::get('/orders',[OrderController::class,'orders'])->middleware(['auth', 'verified'])->name('orders');
 Route::post('/order/status/{id}',[OrderController::class,'order_status'])->middleware(['auth', 'verified'])->name('order.status');
+Route::get('invoice/{order_id}',[OrderController::class,'invoice'])->middleware(['auth', 'verified'])->name('invoice');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
