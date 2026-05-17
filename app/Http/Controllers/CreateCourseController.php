@@ -78,4 +78,16 @@ class CreateCourseController extends Controller
     function inventory(){
         return view('backend.inventory.inventory');
     }
+    function category_course($id){
+        $courses = Course::where('category_id',$id)->get();
+        $categories = Category::with('rel_to_course')->get();
+        $languages = Language::all();
+        $category = Category::find($id);
+        return view('frontend.category_course',[
+            'courses'=>$courses,
+            'Categories'=>$categories,
+            'languages'=>$languages,
+            'category'=>$category,
+        ]);
+    }
 }

@@ -44,6 +44,7 @@ Route::post('store/course',[CreateCourseController::class,'store_course'])->midd
 Route::get('course/list',[CreateCourseController::class,'course_list'])->middleware(['auth', 'verified'])->name('course.list');
 Route::get('inventory',[CreateCourseController::class,'inventory'])->middleware(['auth', 'verified'])->name('inventory');
 Route::get('delete/course/{id}',[CreateCourseController::class,'delete_course'])->middleware(['auth', 'verified'])->name('delete.course');
+Route::get('category/course/{id}',[CreateCourseController::class,'category_course'])->middleware(['auth', 'verified'])->name('category.course');
 
 //tags//
 Route::get('tags',[TagController::class,'tags'])->middleware(['auth', 'verified'])->name('tags');

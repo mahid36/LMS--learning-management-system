@@ -23,7 +23,7 @@
 						<img src="{{asset('uploads/category/'.$cat->category_image)}}" alt="">
 					</div>
 					<!-- Title -->
-					<h5 class="mb-2"><a href="#" class="stretched-link">{{ $cat->category_name }}</a></h5>
+					<h5 class="mb-2"><a href="{{ route('category.course',$cat->id) }}" class="stretched-link">{{ $cat->category_name }}</a></h5>
 					<h6 class="mb-0">{{ $cat->rel_to_course->sum('total_lecture') }} Lectures</h6>
 				</div>
 			</div>
