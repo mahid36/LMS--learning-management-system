@@ -22,6 +22,9 @@
 ### 👤 Edit Profile
 ![Edit Profile](screenshots/edit_profile.png)
 
+### 👤 Edit Profile
+![Edit Profile](screenshots/biling_history.png)
+
 ---
 
 ## ✨ Features
